@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes showText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+        .animation {
+            animation: showText 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const App = {
+            data() {
+                return {
+                    message: 'Hello Maks!!',
+                };
+            },
+        };
+
+        Vue.createApp(App).mount('#app');
+    </script>
+    <!--1.Создать параграф, внутри которого будет отображаться текст
+    “Товаров в корзине 0”
+    2. Создать кнопку “Купить”, при клике на которую, значение внутри
+    параграфа будет увеличиваться на 1, при повторном нажатии на эту
+    кнопку, счетчик не становится больше, добавить 4 таких кнопки
+    3. При нажатии на кнопку купить, необходимо чтобы текст внутри
+    кнопки поменялся на “Товар в Корзине” -->
+    <hr>
+    <h2>Задание 2</h2>
+
+    <div id="app2">
+        <p>Товар в корзине {{count}}</p>
+        <button @click="clickCount">{{btsText}}</button>
+        <button @click="clickDelit">Удалить товар</button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const clicks = {
+            data() {
+                return {
+                    message: 'Hello Maks!!',
+                    count: 0,
+                    btsText: 'Купить'
+
+                };
+            },
+            methods: {
+                clickCount() {
+                    if (this.count < 1) {
+                        this.count++;
+                        this.btsText = 'Товар в корзине'
+                    }
+
+                },
+                clickDelit(count) {
+                    if (this.count > 0) {
+                        this.count--;
+                        this.btsText = 'купить'
+                    }
+
+                }
+            },
+        };
+
+        Vue.createApp(clicks).mount('#app2');
+
+    </script>
+    <hr>
+    <!--     Задание 3 (тайминг 15 минут)
+    1. Создать две кнопки “Мне исполнилось 14 лет” и “Мне еще нет 14 лет”
+    2. Если пользователь нажимает на первую кнопку, то должен
+    отобразиться текст. “Можете заказать товар”
+    3. Если пользователь нажимает на вторую кнопку, отображается текст
+    “Доступ закрыт” -->
+    <div id="app3">
+        <h2>Задание 3</h2>
+        <button @click="isCanBuy=!isCanBuy">Мне 14 лет</button>
+        <p v-show="isCanBuy">Вы можете заказать товар</p>
+        <button @click="isCantBuy =!isCanBuy ">Мне еще нет 14 лет</button>
+        <p v-show="isCantBuy">Доступ закрыт</p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app2 = {
+            data() {
+                return {
+                    message: 'Hello Maks!!',
+                    isCanBuy: false,
+                    isCantBuy: false
+                };
+            },
+        };
+
+        Vue.createApp(app2).mount('#app3');
+    </script>
+    <hr>
+    <h2>Задание 4</h2>
+    <div id="app4"><button @click="isShowMore=!isShowMore">Показать еще</button>
+        <p class="animation" v-if="isShowMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+            perferendis possimus sunt ducimus voluptate dicta. Omnis ipsum quis necessitatibus nam in ducimus quos
+            accusamus, iusto, nihil magnam cupiditate cum vitae.</p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app3 = {
+            data() {
+                return {
+                    isShowMore: false
+
+                };
+            },
+        };
+
+        Vue.createApp(app3).mount('#app4');
+    </script>
+    <hr>
+    <p>Задание 5</p>
+    <!-- Задание 5 (тайминг 15 минут)
+1. Создайте кнопку "Генерировать случайное число". При клике на
+кнопку должно отображаться случайное число в заданном диапазоне
+(например, от 1 до 10).
+2. При клике на кнопку, если полученное значение меньше 5,
+необходимо вывести на страницу, “Число меньше 5”
+3. Если число от 5 до 9, необходимо вывести “Число от 5 до 9”
+4. Если число равно 10, необходимо вывести “Число ранов 10” -->
+    <div id="app5">
+        <button @click="generate">Сгенерировать число</button>
+        <h1>{{generateNumber}}</h1>
+        <p v-if="generateNumber < 5">Число меньше 5</p>
+        <p v-else-if="generateNumber >= 5 && generateNumber < 10">число с 5 до 9</p>
+        <p v-else="generateNumber=!undefined">Число 10 000</p>
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app4 = {
+            data() {
+                return {
+
+                    generateNumber: undefined
+                };
+
+            },
+            methods: {
+                generate() {
+                    this.generateNumber = Math.floor(Math.random() * 10 + 1)
+                }
+            }
+
+        };
+
+        Vue.createApp(app4).mount('#app5');
+    </script>
+
+</body>
+
+</html>

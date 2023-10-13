@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Задание 1. Перевернуть текст кнопки</h2>
+    <div id="app1">
+    <button @click="reverseText">{{ buttonText }}</button>
+</div>
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app1 = Vue.createApp({
+        data() {
+            return {
+                buttonText: 'Перевернуть',
+            };
+        },
+        methods: {
+            reverseText() {
+                this.buttonText = this.buttonText.split('').reverse().join('');
+            },
+        },
+    });
+
+    app1.mount('#app1');
+    
+</script>
+    <hr>
+    <h2>Задание 2.  Есть список элементов. Пользователь может добавлять новые элементы списка 
+        с текстом “Новый элемент списка” нажав на кнопку "Добавить". </h2>
+    <div id="app2">
+        <ul>
+            <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+        </ul>
+        <button @click="addItem">Добавить</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app2 = Vue.createApp({
+            data() {
+                return {
+                    items: [],
+                };
+            },
+            methods: {
+                addItem() {
+                    this.items.push("Новый элемент списка");
+                },
+            },
+        });
+
+        app2.mount('#app2');
+    </script>
+</body>
+</html>

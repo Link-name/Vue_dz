@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <!-- <h2>{{sayHellow()}}</h2> -->
+        <!-- при нажатии на кнопку изменится текст  -->
+        <button v-on:click="changeTEXT">click Button</button>
+        <p>Счечик</p>
+        <!-- <button v-on:click="counter++"> increase  {{counter}} </button> -->
+        <button v-on:click="increase(5,$event)"> chek {{counter}} </button>
+        <h2 v-on:mousemove="muosemMove($event)"> Mose move {{x}} - {{y}}
+            <span v-on:mousemove.stop.prevent="">stop</span>
+        </h2>
+        <p v-html="bigText">{{bigText}}</p>
+        <h3 v-if="productAddInCart">Дабавить в корзину </h3>
+        <h3 v-else="!productAddInCart">Добавлен + </h3>
+        <h3 v-show="productAddInCart">show</h3>
+        <button @click="productAddInCart=!productAddInCart">Add product</button>
+
+    </div>
+    <script>
+        new Vue({
+            el: `#app`,
+            data: {
+                productAddInCart: true,
+                message: `hellow vue`,
+                counter: 0,
+                x: 0,
+                y: 0,
+                bigText: 'big text <span>new text <a href="#">info</a>info</span> '
+
+            },
+            methods: {
+                /*            sayHellow() {
+                               this.message = `new message`;
+                               return this.message;
+                           }, */
+                muosemMove(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                    console.log(event);
+                },
+                changeTEXT() {
+                    this.message = `0_о`
+                },
+                increase(step, event) {
+                    this.counter = this.counter + step
+                    console.log(event);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
