@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>Задание 1 <br>
+        1. Вы разрабатываете страницу для отображения
+        информации о товаре. У вас есть объект product, который
+        содержит информацию о товаре, включая название, цену
+        и URL изображения товара. Вам необходимо отобразить
+        эту информацию на странице с использованием v-bind.
+        2. Добавьте кнопку, которая будет изменять цену товара. При
+        нажатии на кнопку должна генерироваться скидка на
+        товар от 1 до 20% и обновиться цена товара в
+        соответствии с значением скидки</h4>
+
+    <div id="app1">
+        <h2>{{product.name}}</h2>
+        <p>{{product.prise}}</p>
+        <img :src="product.img" alt="apple">
+        <button @click="getSele" :disabled="flag">Хочу скидку</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const Counter1 = {
+            data() {
+                return {
+                    counter: 0,
+                    product: {
+                        name: "apple",
+                        prise: 1000,
+                        img: "https://frutsnab.ru/wa-data/public/shop/products/17/00/17/images/33/33.750x0.jpg"
+
+                    },
+                    flag: false,
+                }
+            },
+            methods: {
+                getSele() {
+                    this.flag = true
+                    const sele = Math.floor(Math.random() * 20 + 1)
+                    this.product.prise = this.product.prise - this.product.prise / 100 * sele;
+                }
+
+            },
+        }
+
+        Vue.createApp(Counter1).mount('#app1')
+
+    </script>
+
+
+    <hr>
+
+    <h4>Задание 2 <br>
+        1. Вы разрабатываете простое приложение для
+        отображения списка пользователей. У вас есть массив
+        объектов users, где каждый объект представляет одного
+        пользователя с его именем и возрастом. Вам необходимо
+        отобразить каждого пользователя из массива в виде
+        списка на странице.
+    </h4>
+
+    <div id="app2">
+        <ol>
+            <li v-for="user in users" :key="user.id">{{user.name}} - {{user.age}}</li>
+        </ol>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const Counter2 = {
+            data() {
+                return {
+                    users: [
+                        { id: 1, name: "Иван", age: 25 },
+                        { id: 2, name: "Максим", age: 33 },
+                        { id: 3, name: "валера", age: 43 },
+                        { id: 4, name: "Витя", age: 42 },
+                    ]
+
+
+                }
+            },
+
+        }
+
+        Vue.createApp(Counter2).mount('#app2')
+
+    </script>
+    <hr>
+    <h4>
+        Задание 3 <br>
+        1. Вы разрабатываете приложение для создания списка
+        покупок. У вас есть массив объектов items, где каждый
+        объект представляет товар с его названием и
+        количеством. Вам необходимо отобразить список товаров,
+        предоставить возможность изменять количество каждого
+        товара и отмечать товары, которые уже куплены
+    </h4>
+
+    <div id="app3">
+        <ul>
+            <li v-for="dood in doods" :key="dood.id">
+                <label><input type="checkbox">{{dood.title}}</label>
+                <input v-model.lazy="dood.amount" type="text" />{{dood.amount}}
+
+            </li>
+        </ul>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const Counter3 = {
+            data() {
+                return {
+                    doods: [
+                        { id: 1, title: 'Хлеб', amount: 1 },
+                        { id: 2, title: 'Картошка', amount: 20 },
+                        { id: 3, title: 'Макароны', amount: 12 },
+                        { id: 4, title: 'Сахар', amount: 53 },
+                    ]
+
+
+
+                }
+            },
+
+        }
+
+        Vue.createApp(Counter3).mount('#app3')
+
+    </script>
+
+
+<hr>
+<h4>
+    Задание 4 <br>
+1. Вы разрабатываете приложение для управления списком контактов.
+У вас есть форма с полями "Имя", "Фамилия" и "Email", где
+пользователь может вводить информацию о новом контакте. После
+добавления контакта он должен отображаться в списке контактов.
+Требуется связать форму с данными и отображать список контактов
+на странице
+</h4>
+
+<div id="app4">
+    <form action="#" @sudmit.prevent="addUser">
+        name:<input type="text" v-model.lazy="name" >
+        sername:<input type="text" v-model.lazy="sername" >
+        Email: <input type="email" v-model.lazy="Email" >
+        <button @click="addUser">send</button>
+    </form>
+    <ul>
+        <li v-for="(user , index) in arrUser" :key="index" @click="deleteUser(index)">{{user.name}} - {{user.sername}} - {{Email}}
+
+        </li>
+    </ul>
+
+
+</div>
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Counter4 = {
+        data() {
+            return {
+                name:"",
+                sername:"",
+                Email:"",
+                arrUser:[]
+    
+            }
+        },
+        methods:{
+            addUser(){
+                const user={
+                    name:this.name,
+                    sername:this.sername,
+                    Email:this.mail
+
+                }
+                this.arrUser.push(user);
+                this.name = "";
+                this.sername = "";
+                this.mail="";
+            },
+            deleteUser(index){
+                /* event.target.remove(); */
+                this.arrUser.splice(index,1)
+            }
+
+        }
+
+    }
+
+    Vue.createApp(Counter4).mount('#app4')
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
