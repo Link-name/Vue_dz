@@ -194,7 +194,7 @@
   background-color: #FFF;
   left: 7%;
   bottom: 10%;
-  max-width: 124px;
+  max-width: 125px;
   height: 40px;
   border-radius: 6px;
   padding: 8px 10px;
@@ -219,7 +219,7 @@
   line-height: 125%;
   /* 31.25px */
   letter-spacing: 0.5px;
-  width: 305px;
+  width: 287px;
 }
 .section__product__cart__dataInButton {
   display: flex;

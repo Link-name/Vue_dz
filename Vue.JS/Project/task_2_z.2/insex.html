@@ -24,7 +24,8 @@
         <button @click="sortDescending">Сортировать по убыванию цены</button>
     
         <ul>
-          <li v-for="product in sortedProducts" :key="product.id">
+          <li v-for="product in sortedProducts" :key="product.id"><!-- добавили сортеровочное свойство , а не изначальный массив (sortedProducts) -->
+    
             {{ product.name }} - {{ product.price }} руб.
           </li>
         </ul>
@@ -46,6 +47,7 @@
         };
       },
       computed: {
+        // сортировочное свойство
         sortedProducts() {
           const products = [...this.products];
           if (this.ascendingSort) {

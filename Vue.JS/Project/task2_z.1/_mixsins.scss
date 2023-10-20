@@ -1,0 +1,15 @@
+@mixin styTextBlook{
+   
+        color:$ColorText;
+        font-family: Jost;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        /* 33px */
+        letter-spacing: 0.22px;
+        max-width: 100% ;
+        
+      
+  }
+  

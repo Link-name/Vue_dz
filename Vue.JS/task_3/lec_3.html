@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1">
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const Counter1 = {
+            data() {
+                return {
+                    messeg:"Привет"
+                  
+                }
+            },
+            methods: {
+                getSele() {
+                    console.log('Друг');
+                   
+                }
+
+            },
+            compued:{
+               newText(){
+                return this.messeg
+               }
+
+            }
+        }
+
+        Vue.createApp(Counter1).mount('#app1')
+
+    </script>
+    
+</body>
+</html>

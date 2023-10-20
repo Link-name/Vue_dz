@@ -1,0 +1,154 @@
+@import 'mixsins';
+@import 'vars';
+
+.section {
+    display: flex;
+    justify-content: center;
+    margin-top: 130px;
+
+}
+
+.article {
+    max-width: 800px;
+
+    &__content1 {
+        &__header {
+            width: 90%;
+            color: $ColorTitle;
+            font-family: DM Serif Display;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 125%;
+            /* 62.5px */
+            letter-spacing: 1px;
+        }
+
+        &__text {
+            @include styTextBlook;
+            margin-bottom: 35px;
+        }
+
+        &__data-menu {
+            margin-top: 46px;
+            margin-bottom: 48px;
+            display: flex;
+            gap: 400px;
+
+            &__data {
+                width: 146px;
+                height: 24px;
+                color: $ColorText;
+                font-family: Jost;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 150%;
+                /* 24px */
+                letter-spacing: 0.16px;
+                text-transform: capitalize;
+            }
+
+            &__menu {
+                width: 249px;
+                height: 24px;
+
+                &__link {
+                    color: $ColorText;
+                    font-family: Jost;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 150%;
+                    /* 24px */
+                    letter-spacing: 0.16px;
+                    text-transform: capitalize;
+                    text-decoration: none;
+                }
+
+            }
+
+        }
+    }
+
+    &__content2 {
+        &__header {
+            margin-top: 27px;
+            width: 90%;
+            color: $ColorTitle;
+            font-family: DM Serif Display;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 125%;
+            /* 62.5px */
+            letter-spacing: 1px;
+
+        }
+
+        &__text {
+            margin-top: 20px;
+            @include styTextBlook;
+
+        }
+
+        &__list {
+
+            /* Стиль нумерации */
+            padding-left: 20px;
+
+            &__style {
+                margin-top: 30px;
+                @include styTextBlook;
+
+
+            }
+        }
+
+        &__img {
+            margin-top: 44px;
+
+        }
+
+    }
+
+}
+
+.aside {
+    margin-left: 50px;
+    &__buttons{
+        margin-top: 24px;
+        
+        display: flex;
+        max-width: 350px;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        &__1 {
+            border-radius: 10px;
+            background: #F4F0EC;
+            display: flex;
+            padding: 9px 30px;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            text-align: center;
+            font-family: Jost;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 125%;
+            /* 22.5px */
+            letter-spacing: 0.36px;
+        }
+
+    }
+ 
+}
+.active {
+    background-color: #292F36; /* Цвет активной кнопки */
+    color: #ffffff; /* Цвет текста активной кнопки */
+}
+.img__whidth__max{
+    max-width: 800px; //ширина
+}
